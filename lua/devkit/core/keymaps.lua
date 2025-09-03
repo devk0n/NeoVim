@@ -20,7 +20,7 @@ keymap.set("n", "x", '"_x', { desc = "Delete character (no yank)" })
 -- Search
 keymap.set("n", "n", "nzzzv", { desc = "Next match (centered)" })
 keymap.set("n", "N", "Nzzzv", { desc = "Prev match (centered)" })
-keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlight" })
+keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlight", noremap = true, silent = true })
 
 -- Indentation (visual mode)
 keymap.set("v", ">", ">gv", { desc = "Indent right (stay in selection)" })
