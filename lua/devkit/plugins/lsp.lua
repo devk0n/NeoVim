@@ -1,4 +1,8 @@
 return {
+  {
+    "folke/neodev.nvim",
+    opts = {},
+  },
   "neovim/nvim-lspconfig",
   dependencies = { "hrsh7th/cmp-nvim-lsp" },
   config = function()
@@ -44,14 +48,39 @@ return {
       },
     })
 
+    -- Define sign icons for each severity
+    local signs = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN]  = " ",
+      [vim.diagnostic.severity.HINT]  = "󰠠 ",
+      [vim.diagnostic.severity.INFO]  = " ",
+    }
+
+    -- Set the diagnostic config with all icons
+    vim.diagnostic.config({
+      signs = {
+        text = signs -- Enable signs in the gutter
+      },
+      virtual_text = true,  -- Specify Enable virtual text for diagnostics
+      underline = true,     -- Specify Underline diagnostics
+      update_in_insert = false,  -- Keep diagnostics active in insert mode
+    })
+
     -- Lua LS (for Neovim config)
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
         Lua = {
-          diagnostics = { globals = { "vim" } },
-          workspace = { checkThirdParty = false },
+          diagnostics = {
+            globals = { "vim" }
+          },
+          workspace = {
+            checkThirdParty = false,
+            library = {
+              vim.fn.stdpath("data") .. "/lazy/nvim-cmp"
+            },
+          },
         },
       },
     })

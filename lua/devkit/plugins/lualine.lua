@@ -24,8 +24,11 @@ return {
           { "diff", source = require("gitsigns").diff_source }, -- fast diff from gitsigns
         },
         lualine_c = { "filename" },
-        lualine_x = { "encoding", "filetype" },
         lualine_y = { "progress" },
+        lualine_x = {
+          { "diagnostics", sources = { "nvim_lsp" } },
+          "encoding", "filetype"
+        },
         lualine_z = { "location" },
       },
       inactive_sections = {

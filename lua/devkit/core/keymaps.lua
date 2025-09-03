@@ -1,7 +1,7 @@
 -- Shorthands
 local g = vim.g
 local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
+-- local opts = { noremap = true, silent = true }
 
 -- Leaders
 g.mapleader = " "
