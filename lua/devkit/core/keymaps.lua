@@ -1,4 +1,3 @@
-
 -- Shorthands
 local g = vim.g
 local keymap = vim.keymap

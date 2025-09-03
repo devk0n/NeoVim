@@ -12,7 +12,7 @@ return {
   -- Setup
   config = function()
     require("oil").setup({
-      default_file_explorer = true,    -- use Oil instead of netrw
+      default_file_explorer = true,    -- replace netrw with Oil
       delete_to_trash = true,          -- requires `trash-cli` on Linux
       skip_confirm_for_simple_edits = true,
 
@@ -23,7 +23,7 @@ return {
       -- Oil-specific keymaps (only inside Oil buffers)
       keymaps = {
         ["<C-h>]"] = false,            -- example: disable built-in if you don’t want it
-        ["<C-c>"] = false,             -- don’t close Oil on <C-c> (treat it like <Esc>)
+        ["<C-c>"] = false,             -- don’t close Oil on <C-c>
         ["<M-h>"] = "actions.select_split",
         ["q"] = "actions.close",
       },
@@ -44,6 +44,18 @@ return {
         vim.opt_local.cursorline = true
       end,
       desc = "Oil: enable cursorline",
+    })
+
+    -- Auto-change Neovim’s working directory to match Oil
+    vim.api.nvim_create_autocmd("BufEnter", {
+      pattern = "oil://*",
+      callback = function()
+        local dir = require("oil").get_current_dir()
+        if dir then
+          vim.cmd.cd(dir)   -- change cwd
+        end
+      end,
+      desc = "Oil: follow current directory",
     })
   end,
 }
