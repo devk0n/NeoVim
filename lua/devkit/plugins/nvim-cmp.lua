@@ -72,6 +72,11 @@ return {
         },
       })
 
+      -- Disable in Oil buffers
+      cmp.setup.filetype("oil", {
+        enabled = false,
+      })
+
       -- Cmdline setup (search `/`)
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),

@@ -1,4 +1,3 @@
-
 return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" }, -- optional, for icons
@@ -15,10 +14,13 @@ return {
       default_file_explorer = true,    -- replace netrw with Oil
       delete_to_trash = true,          -- requires `trash-cli` on Linux
       skip_confirm_for_simple_edits = true,
+      watch_for_changes = true,
 
       -- Show/hide columns (leave empty for minimal UI)
       -- Common choices: "icon", "permissions", "size", "mtime"
-      columns = {},
+      columns = {
+        "icon",
+      },
 
       -- Oil-specific keymaps (only inside Oil buffers)
       keymaps = {
@@ -34,8 +36,8 @@ return {
     })
 
     -- Global mappings
-    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-    vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "Oil (float)" })
+    vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    vim.keymap.set("n", "-", require("oil").toggle_float, { desc = "Oil (float)" })
 
     -- Buffer-local tweaks in Oil
     vim.api.nvim_create_autocmd("FileType", {

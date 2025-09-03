@@ -11,6 +11,10 @@ o.scrolloff = 8                 -- keep at least 8 lines visible above/below cur
 o.colorcolumn = "80"            -- thin visual guide at 80 columns
 o.wrap = false                  -- don't soft-wrap long lines
 
+-- Cursor guides
+o.cursorline = true
+o.cursorcolumn = true
+
 -- Editing
 o.backspace = { "start", "eol", "indent" }  -- behave like modern editors
 o.isfname:append("@-@")         -- treat @-@ as part of filenames (useful for some paths)
