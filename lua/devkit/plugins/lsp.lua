@@ -43,17 +43,19 @@ return {
         on_attach = on_attach,
         cmd = {
           "clangd",
-          "--background-index",       -- index your codebase for fast cross-ref
-          "--clang-tidy",             -- run clang-tidy diagnostics
+          "--background-index",          -- index your codebase for fast cross-ref
+          "--clang-tidy",                -- run clang-tidy diagnostics
           "--completion-style=detailed", -- better autocompletion
-          "--header-insertion=never", -- don’t auto-insert headers
-          "--cross-file-rename",      -- smarter renaming across files
-          "--offset-encoding=utf-16", -- avoid encoding mismatches in Neovim
+          "--header-insertion=never",    -- don’t auto-insert headers
+          "--cross-file-rename",         -- smarter renaming across files
+          "--offset-encoding=utf-16",    -- avoid encoding mismatches in Neovim
+          "--compile-commands-dir=build",
+          "--query-driver=/home/devkon/.espressif/tools/xtensa-esp-elf*/**/bin/xtensa-esp32s3-elf-*"
         },
         init_options = {
-          clangdFileStatus = true,    -- show file status in LSP messages
-          usePlaceholders = true,     -- enable placeholders for function args
-          completeUnimported = true,  -- suggest symbols from not-included headers
+          clangdFileStatus = true,   -- show file status in LSP messages
+          usePlaceholders = true,    -- enable placeholders for function args
+          completeUnimported = true, -- suggest symbols from not-included headers
           semanticHighlighting = true,
         },
       })
@@ -69,11 +71,11 @@ return {
       -- Set the diagnostic config with all icons
       vim.diagnostic.config({
         signs = {
-          text = signs -- Enable signs in the gutter
+          text = signs            -- Enable signs in the gutter
         },
-        virtual_text = true,  -- Specify Enable virtual text for diagnostics
-        underline = true,     -- Specify Underline diagnostics
-        update_in_insert = false,  -- Keep diagnostics active in insert mode
+        virtual_text = true,      -- Specify Enable virtual text for diagnostics
+        underline = true,         -- Specify Underline diagnostics
+        update_in_insert = false, -- Keep diagnostics active in insert mode
       })
 
       -- Lua LS (for Neovim config)
