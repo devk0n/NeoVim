@@ -35,6 +35,9 @@ return {
       },
     })
 
+    -- Define the hightlight groups
+    -- vim.api.nvim_set_h1(0, "OilFloatBorder", { link = "FloatBorder" })
+
     -- Global mappings
     vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     vim.keymap.set("n", "-", require("oil").toggle_float, { desc = "Oil (float)" })
