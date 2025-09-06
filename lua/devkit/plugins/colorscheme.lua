@@ -1,27 +1,17 @@
 return {
   {
     "ellisonleao/gruvbox.nvim",
-    priority = 1000,                     -- load before other plugins
+    priority = 1000,
     config = function()
-      -- Set up Gruvbox with your preferred options
       require("gruvbox").setup({
-        contrast = "hard",               -- "soft", "medium", or "hard"
-        palette_overrides = {},          -- you can override specific colours here
-        overrides = {},                  -- per‑group overrides if you need them
+        contrast = "hard",
       })
 
-      -- Activate the colorscheme
       vim.cmd("colorscheme gruvbox")
 
-      -- ---------------------------------------------------------
-      -- Link Oil.nvim’s floating‑window highlights to the generic
-      -- Neovim float highlights that Gruvbox already defines.
-      -- This makes the Oil window inherit the same border/background.
-      -- ---------------------------------------------------------
-      vim.api.nvim_set_hl(0, "OilFloatBorder", { link = "FloatBorder" })
-      vim.api.nvim_set_hl(0, "OilFloatNormal", { link = "NormalFloat" })
+      -- Fix floating windows (Oil.nvim, Telescope, etc.)
+      vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+      vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
     end,
   },
-
-  -- …your other plugin specs go here…
 }

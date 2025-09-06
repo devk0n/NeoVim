@@ -3,7 +3,7 @@ if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
-    "--fliter=blob:none",
+    "--filter=blob:none", -- typo fixed: fliter → filter
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
     lazypath,
@@ -22,6 +22,9 @@ require("lazy").setup(
     },
     change_detection = {
       notify = false,
+    },
+    rocks = {
+      enabled = false,
     },
   }
 )
