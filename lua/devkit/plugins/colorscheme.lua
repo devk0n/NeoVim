@@ -1,9 +1,12 @@
 return {
+  -- Gruvbox
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    lazy = false,
+  },
   -- Nightfox
-  { "EdenEast/nightfox.nvim",
-    priority = 1000,  -- load before other start plugins
-    config = function()
-      vim.cmd.colorscheme("nightfox")
-    end,
+  { 
+    "EdenEast/nightfox.nvim",
   },
 }
