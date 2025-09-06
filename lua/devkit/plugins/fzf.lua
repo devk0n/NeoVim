@@ -11,6 +11,7 @@ return {
         grep = {
           cmd = "rg",
           rg_opts = "--hidden --follow --glob '!.git' --line-number --column --no-heading --smart-case",
+          silent = true,
         },
         winopts = { preview = { default = "bat_native" } },
       }
